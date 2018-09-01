@@ -16,5 +16,20 @@ namespace simpleTestingSystem
         {
             InitializeComponent();
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            checkInputFields();
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            checkInputFields();
+        }
+
+        private void checkInputFields()
+        {
+            button1.Enabled = !(string.IsNullOrWhiteSpace(textBox1.Text) || string.IsNullOrWhiteSpace(textBox2.Text));
+        }
     }
 }

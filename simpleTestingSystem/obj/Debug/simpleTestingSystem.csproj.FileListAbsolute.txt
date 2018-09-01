@@ -7,3 +7,4 @@ C:\MyProjects\simpleTestingSystem\simpleTestingSystem\obj\Debug\simpleTestingSys
 C:\MyProjects\simpleTestingSystem\simpleTestingSystem\obj\Debug\simpleTestingSystem.csproj.GenerateResource.Cache
 C:\MyProjects\simpleTestingSystem\simpleTestingSystem\obj\Debug\simpleTestingSystem.exe
 C:\MyProjects\simpleTestingSystem\simpleTestingSystem\obj\Debug\simpleTestingSystem.pdb
+C:\MyProjects\simpleTestingSystem\simpleTestingSystem\obj\Debug\simpleTestingSystem.Form1.resources
