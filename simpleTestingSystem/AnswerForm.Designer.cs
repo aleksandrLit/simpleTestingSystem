@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.answerTextBox = new System.Windows.Forms.TextBox();
+            this.saveAnswerButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -42,32 +42,32 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Введите ответ:";
             // 
-            // textBox1
+            // answerTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(11, 33);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(475, 114);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.answerTextBox.Location = new System.Drawing.Point(11, 33);
+            this.answerTextBox.Multiline = true;
+            this.answerTextBox.Name = "answerTextBox";
+            this.answerTextBox.Size = new System.Drawing.Size(475, 114);
+            this.answerTextBox.TabIndex = 1;
+            this.answerTextBox.TextChanged += new System.EventHandler(this.answerTextBox_TextChanged);
             // 
-            // button1
+            // saveAnswerButton
             // 
-            this.button1.Location = new System.Drawing.Point(411, 153);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Сохранить";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button1_MouseClick);
+            this.saveAnswerButton.Location = new System.Drawing.Point(411, 153);
+            this.saveAnswerButton.Name = "saveAnswerButton";
+            this.saveAnswerButton.Size = new System.Drawing.Size(75, 23);
+            this.saveAnswerButton.TabIndex = 2;
+            this.saveAnswerButton.Text = "Сохранить";
+            this.saveAnswerButton.UseVisualStyleBackColor = true;
+            this.saveAnswerButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.saveAnswerButton_MouseClick);
             // 
             // AnswerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(498, 188);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.saveAnswerButton);
+            this.Controls.Add(this.answerTextBox);
             this.Controls.Add(this.label1);
             this.Name = "AnswerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -80,7 +80,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox answerTextBox;
+        private System.Windows.Forms.Button saveAnswerButton;
     }
 }

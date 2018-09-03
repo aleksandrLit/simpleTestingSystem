@@ -1,7 +1,21 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="simpleTestingSystem.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="SATISFACTORILY_MARK_BUTTOM_RANGE" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0.53</Value>
+    </Setting>
+    <Setting Name="SATISFACTORILY_MARK_UPPER_RANGE" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0.8</Value>
+    </Setting>
+    <Setting Name="WELL_MARK_BUTTOM_RANGE" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0.8</Value>
+    </Setting>
+    <Setting Name="WELL_MARK_UPPER_RANGE" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0.93</Value>
+    </Setting>
+    <Setting Name="EXCELLENT_MARK_BUTTOM_RANGE" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0.93</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

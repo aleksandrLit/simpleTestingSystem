@@ -17,8 +17,6 @@ namespace simpleTestingSystem
 {
     public partial class AdministrationForm : Form
     {
-        public const string FILE_QUESTION = "fileQuestion";
-
         IQuestionService questionService;
         TestQuestion selectedItem;
         BindingList<TestQuestion> questions;
@@ -31,31 +29,31 @@ namespace simpleTestingSystem
             fillQuestionList(questions);
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void questionListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Boolean selectedItemNotNull = ((ListBox)sender).SelectedItem != null;
-            selectedItem = selectedItemNotNull ? (TestQuestion)listBox1.SelectedItem : null;
-            button2.Enabled = selectedItemNotNull;
-            button3.Enabled = selectedItemNotNull;
+            selectedItem = selectedItemNotNull ? (TestQuestion)questionListBox.SelectedItem : null;
+            editQuestionButton.Enabled = selectedItemNotNull;
+            removeQuestionButton.Enabled = selectedItemNotNull;
         }
 
         private void fillQuestionList(BindingList<TestQuestion> questions)
         {
-            listBox1.DataSource = questions;
-            listBox1.DisplayMember = "textQuestion";
+            questionListBox.DataSource = questions;
+            questionListBox.DisplayMember = "textQuestion";
         }
 
-        private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void questionListBox_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            button2_MouseClick(sender, e);
+            editQuestionButton_MouseClick(sender, e);
         }
 
-        private void button1_MouseClick(object sender, MouseEventArgs e)
+        private void addQuestionButton_MouseClick(object sender, MouseEventArgs e)
         {
             this.Hide();
             using (var addQuestionForm = new QuestionForm())
             {
-                addQuestionForm.Text = "Добавить новый вопрос";
+                addQuestionForm.Text = Properties.Resources.ADD_QUESTION;
                 var result = addQuestionForm.ShowDialog();
                 if (DialogResult.OK.Equals(result))
                 {
@@ -65,14 +63,14 @@ namespace simpleTestingSystem
             }
         }
 
-        private void button2_MouseClick(object sender, MouseEventArgs e)
+        private void editQuestionButton_MouseClick(object sender, MouseEventArgs e)
         {
             this.Hide();
-            TestQuestion selectedQuestion = (TestQuestion)listBox1.SelectedItem;
-            int selectedIndex = listBox1.SelectedIndex;
+            TestQuestion selectedQuestion = (TestQuestion)questionListBox.SelectedItem;
+            int selectedIndex = questionListBox.SelectedIndex;
             using (var addQuestionForm = new QuestionForm(selectedQuestion))
             {
-                addQuestionForm.Text = "Изменить вопрос";
+                addQuestionForm.Text = Properties.Resources.CHANGE_QUESTION;
                 var result = addQuestionForm.ShowDialog();
                 if (DialogResult.OK.Equals(result))
                 {
@@ -82,26 +80,26 @@ namespace simpleTestingSystem
             }
         }
 
-        private void button3_MouseClick(object sender, MouseEventArgs e)
+        private void removeQuestionButton_MouseClick(object sender, MouseEventArgs e)
         {
-            questions.Remove((TestQuestion)listBox1.SelectedItem);
+            questions.Remove((TestQuestion)questionListBox.SelectedItem);
         }
 
-        private void button4_MouseClick(object sender, MouseEventArgs e)
+        private void saveQuestionsButton_MouseClick(object sender, MouseEventArgs e)
         {
             TestQuestion[] testQuestions = questions.ToArray();
             BinaryFormatter formatter = new BinaryFormatter();
-            string fileName = Properties.Resources.ResourceManager.GetString(FILE_QUESTION);
+            string fileName = Properties.Resources.FILE_QUESTIONS;
             SerializeUtils.serialize(testQuestions, fileName);
-            MessageBox.Show("Вопросы успешно сохранены!");
+            MessageBox.Show(Properties.Resources.SUCCESS_SAVED_QUESTIONS);
         }
 
         private List<TestQuestion> loadQuestion()
         {
             List<TestQuestion> questions = new List<TestQuestion>();
-            if (File.Exists(Properties.Resources.ResourceManager.GetString(FILE_QUESTION)))
+            if (File.Exists(Properties.Resources.FILE_QUESTIONS))
             {
-                object deserializeObject = SerializeUtils.deserialize(Properties.Resources.ResourceManager.GetString(FILE_QUESTION));
+                object deserializeObject = SerializeUtils.deserialize(Properties.Resources.FILE_QUESTIONS);
                 questions = ((TestQuestion[])deserializeObject).ToList();
             }
             return questions;

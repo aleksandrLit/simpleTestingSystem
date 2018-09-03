@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace simpleTestingSystem.Models
 {
+    [Serializable]
     public class User
     {
-        public String usernName { get; set; }
+        public String userName { get; set; }
         public String password { get; set; }
         public String firstName { get; set; }
         public String middleName { get; set; }

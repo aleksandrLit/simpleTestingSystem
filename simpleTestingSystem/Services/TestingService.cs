@@ -5,10 +5,11 @@ using System.Text;
 using simpleTestingSystem.Models;
 using simpleTestingSystem.Utils;
 using System.IO;
+using static simpleTestingSystem.Properties.Settings;
 
 namespace simpleTestingSystem.Services
 {
-    class TestingService : ITestingService
+    public class TestingService : ITestingService
     {
         static Random rnd = new Random();
         List<TestQuestion> questionBeforeRandomize { set; get; }
@@ -43,7 +44,8 @@ namespace simpleTestingSystem.Services
                 if (k.Equals(testQuestion.correctAnswerNumber))
                 {
                     testQuestion.correctAnswerNumber = n;
-                } else if (n.Equals(testQuestion.correctAnswerNumber))
+                }
+                else if (n.Equals(testQuestion.correctAnswerNumber))
                 {
                     testQuestion.correctAnswerNumber = k;
                 }
@@ -53,7 +55,7 @@ namespace simpleTestingSystem.Services
         public double calculateResult(Dictionary<int, int> userAnswers, List<TestQuestion> currentQuestions)
         {
             int correctAnswers = 0;
-            foreach(var value in userAnswers.ToArray())
+            foreach (var value in userAnswers.ToArray())
             {
                 int currentAnswers = currentQuestions[value.Key].correctAnswerNumber;
                 if (currentAnswers.Equals(value.Value))
@@ -66,18 +68,21 @@ namespace simpleTestingSystem.Services
 
         public string getMarkInText(double markInProcent)
         {
-            if (markInProcent >= 0.53D && markInProcent < 0.8D)
+            if (markInProcent >= Default.SATISFACTORILY_MARK_BUTTOM_RANGE && markInProcent < Default.SATISFACTORILY_MARK_UPPER_RANGE)
             {
-                return "Удовлетворительно";
-            } else if (markInProcent >= 0.8D && markInProcent < 0.93D)
+                return Properties.Resources.SATISFACTORILY_MARK;
+            }
+            else if (markInProcent >= Default.WELL_MARK_BUTTOM_RANGE && markInProcent < Default.WELL_MARK_UPPER_RANGE)
             {
-                return "Хорошо";
-            } else if (markInProcent >= 0.93D)
+                return Properties.Resources.WELL_MARK;
+            }
+            else if (markInProcent >= Default.EXCELLENT_MARK_BUTTOM_RANGE)
             {
-                return "Отлично";
-            } else
+                return Properties.Resources.EXCELLENT_MARK;
+            }
+            else
             {
-                return "Неудовлетворительно";
+                return Properties.Resources.UNSATISFACTORILY_MARK;
             }
         }
 
@@ -95,7 +100,7 @@ namespace simpleTestingSystem.Services
         public List<Pair<string, string>> fillPairQuestionAnswer(List<TestQuestion> questions, Dictionary<int, int> answersForQuestions)
         {
             List<Pair<string, string>> answers = new List<Pair<string, string>>();
-            foreach(KeyValuePair<int, int> valie in answersForQuestions)
+            foreach (KeyValuePair<int, int> valie in answersForQuestions)
             {
                 answers.Add(new Pair<string, string>(questions[valie.Key].textQuestion, questions[valie.Key].answers[valie.Value]));
             }

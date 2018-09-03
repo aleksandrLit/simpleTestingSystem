@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace simpleTestingSystem.Services
 {
-    interface ITestingService
+    public interface ITestingService
     {
         List<TestQuestion> randomizeQuestionList(List<TestQuestion> questions);
         double calculateResult(Dictionary<int, int> userAnswers, List<TestQuestion> questions);

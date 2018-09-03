@@ -28,25 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.saveQuestionButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.questionTextBox = new System.Windows.Forms.TextBox();
+            this.answersCheckedListBox = new System.Windows.Forms.CheckedListBox();
+            this.addAnswerButton = new System.Windows.Forms.Button();
+            this.editAnswerButton = new System.Windows.Forms.Button();
+            this.removeAnswerButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // saveQuestionButton
             // 
-            this.button1.Location = new System.Drawing.Point(10, 249);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(99, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Сохранить";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button1_MouseClick);
+            this.saveQuestionButton.Location = new System.Drawing.Point(10, 249);
+            this.saveQuestionButton.Name = "saveQuestionButton";
+            this.saveQuestionButton.Size = new System.Drawing.Size(99, 23);
+            this.saveQuestionButton.TabIndex = 0;
+            this.saveQuestionButton.Text = "Сохранить";
+            this.saveQuestionButton.UseVisualStyleBackColor = true;
+            this.saveQuestionButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.saveQuestionButton_MouseClick);
             // 
             // label1
             // 
@@ -57,56 +57,56 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Вопрос:";
             // 
-            // textBox1
+            // questionTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(65, 18);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(481, 59);
-            this.textBox1.TabIndex = 2;
+            this.questionTextBox.Location = new System.Drawing.Point(65, 18);
+            this.questionTextBox.Multiline = true;
+            this.questionTextBox.Name = "questionTextBox";
+            this.questionTextBox.Size = new System.Drawing.Size(481, 59);
+            this.questionTextBox.TabIndex = 2;
             // 
-            // checkedListBox1
+            // answersCheckedListBox
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.HorizontalScrollbar = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(10, 97);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(536, 139);
-            this.checkedListBox1.TabIndex = 3;
-            this.checkedListBox1.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBox1_ItemCheck);
-            this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
+            this.answersCheckedListBox.FormattingEnabled = true;
+            this.answersCheckedListBox.HorizontalScrollbar = true;
+            this.answersCheckedListBox.Location = new System.Drawing.Point(10, 97);
+            this.answersCheckedListBox.Name = "answersCheckedListBox";
+            this.answersCheckedListBox.Size = new System.Drawing.Size(536, 139);
+            this.answersCheckedListBox.TabIndex = 3;
+            this.answersCheckedListBox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.answersCheckedListBox_ItemCheck);
+            this.answersCheckedListBox.SelectedIndexChanged += new System.EventHandler(this.answersCheckedListBox_SelectedIndexChanged);
             // 
-            // button2
+            // addAnswerButton
             // 
-            this.button2.Location = new System.Drawing.Point(564, 97);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Добавить";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button2_MouseClick);
+            this.addAnswerButton.Location = new System.Drawing.Point(564, 97);
+            this.addAnswerButton.Name = "addAnswerButton";
+            this.addAnswerButton.Size = new System.Drawing.Size(75, 23);
+            this.addAnswerButton.TabIndex = 4;
+            this.addAnswerButton.Text = "Добавить";
+            this.addAnswerButton.UseVisualStyleBackColor = true;
+            this.addAnswerButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.addAnswerButton_MouseClick);
             // 
-            // button3
+            // editAnswerButton
             // 
-            this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(564, 135);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "Изменить";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button3_MouseClick);
+            this.editAnswerButton.Enabled = false;
+            this.editAnswerButton.Location = new System.Drawing.Point(564, 135);
+            this.editAnswerButton.Name = "editAnswerButton";
+            this.editAnswerButton.Size = new System.Drawing.Size(75, 23);
+            this.editAnswerButton.TabIndex = 5;
+            this.editAnswerButton.Text = "Изменить";
+            this.editAnswerButton.UseVisualStyleBackColor = true;
+            this.editAnswerButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.editAnswerButton_MouseClick);
             // 
-            // button4
+            // removeAnswerButton
             // 
-            this.button4.Enabled = false;
-            this.button4.Location = new System.Drawing.Point(564, 174);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 6;
-            this.button4.Text = "Удалить";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button4_MouseClick);
+            this.removeAnswerButton.Enabled = false;
+            this.removeAnswerButton.Location = new System.Drawing.Point(564, 174);
+            this.removeAnswerButton.Name = "removeAnswerButton";
+            this.removeAnswerButton.Size = new System.Drawing.Size(75, 23);
+            this.removeAnswerButton.TabIndex = 6;
+            this.removeAnswerButton.Text = "Удалить";
+            this.removeAnswerButton.UseVisualStyleBackColor = true;
+            this.removeAnswerButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.removeAnswerButton_MouseClick);
             // 
             // label2
             // 
@@ -123,13 +123,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(651, 284);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.checkedListBox1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.removeAnswerButton);
+            this.Controls.Add(this.editAnswerButton);
+            this.Controls.Add(this.addAnswerButton);
+            this.Controls.Add(this.answersCheckedListBox);
+            this.Controls.Add(this.questionTextBox);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.saveQuestionButton);
             this.Name = "QuestionForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddQuestionForm";
@@ -140,13 +140,13 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button saveQuestionButton;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox questionTextBox;
+        private System.Windows.Forms.CheckedListBox answersCheckedListBox;
+        private System.Windows.Forms.Button addAnswerButton;
+        private System.Windows.Forms.Button editAnswerButton;
+        private System.Windows.Forms.Button removeAnswerButton;
         private System.Windows.Forms.Label label2;
     }
 }

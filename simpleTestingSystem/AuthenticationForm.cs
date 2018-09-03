@@ -2,56 +2,50 @@
 using simpleTestingSystem.Services;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace simpleTestingSystem
 {
-    public partial class Form1 : Form
+    public partial class AuthenticationForm : Form
     {
 
-        private readonly log4net.ILog logger = log4net.LogManager.GetLogger(typeof(Form1));
+        private readonly log4net.ILog logger = log4net.LogManager.GetLogger(typeof(AuthenticationForm));
 
         IUserService userService;
 
         private List<User> users { set; get; }
 
-        public Form1()
+        public AuthenticationForm()
         {
             InitializeComponent();
             userService = new UserService();
             logger.Info("Form1 start");         
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void usernameTextBox_TextChanged(object sender, EventArgs e)
         {
             checkInputFields();
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        private void passwordTextBox_TextChanged(object sender, EventArgs e)
         {
             checkInputFields();
         }
 
         private void checkInputFields()
         {
-            button1.Enabled = !(string.IsNullOrWhiteSpace(textBox1.Text) || string.IsNullOrWhiteSpace(textBox2.Text));
+            submitButton.Enabled = !(string.IsNullOrWhiteSpace(usernameTextBox.Text) || string.IsNullOrWhiteSpace(passwordTextBox.Text));
         }
 
-        private void button1_MouseClick(object sender, MouseEventArgs e)
+        private void submitButton_MouseClick(object sender, MouseEventArgs e)
         {
-            User user = userService.getUserByUsernameAndPassword(textBox1.Text, textBox2.Text);
+            User user = userService.getUserByUsernameAndPassword(usernameTextBox.Text, passwordTextBox.Text);
             if (user != null)
             {
-                textBox2.Text = "";
+                passwordTextBox.Text = "";
                 MessageBox.Show(string.Format("Вход выполнен!\nДобрый день,{1} {0}!", user.firstName, user.lastName));
                 this.Hide();
-                setCurrentUser(user);
+                setCurrentUserInContext(user);
                 using (var nextForm = user.isSuperuser ? (Form)new AdministrationForm() : new TestingForm())
                 {
                     if (!nextForm.IsDisposed)
@@ -62,11 +56,11 @@ namespace simpleTestingSystem
                 this.Show();
             } else
             {
-                MessageBox.Show(string.Format("Имя пользователя или пароль не верны"));
+                MessageBox.Show(string.Format(Properties.Resources.WRONG_USER_NAME_OR_PASSWORD));
             }
         }
 
-        private void setCurrentUser(User user)
+        private void setCurrentUserInContext(User user)
         {
             if (Properties.Settings.Default.Context[Properties.Resources.CURRENT_USER] != null)
             {
@@ -75,6 +69,16 @@ namespace simpleTestingSystem
             {
                 Properties.Settings.Default.Context.Add(Properties.Resources.CURRENT_USER, user);
             }
+        }
+
+        private void addNewUserButton_MouseClick(object sender, MouseEventArgs e)
+        {
+            using(UserForm form = new UserForm(userService))
+            {
+                this.Hide();
+                form.ShowDialog();
+            }
+            this.Show();
         }
     }
 }

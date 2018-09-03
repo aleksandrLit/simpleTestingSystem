@@ -61,6 +61,42 @@ namespace simpleTestingSystem.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Добавить новый ответ.
+        /// </summary>
+        internal static string ADD_ANSWER {
+            get {
+                return ResourceManager.GetString("ADD_ANSWER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Добавить новый вопрос.
+        /// </summary>
+        internal static string ADD_QUESTION {
+            get {
+                return ResourceManager.GetString("ADD_QUESTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Внимание!.
+        /// </summary>
+        internal static string ATTENTION {
+            get {
+                return ResourceManager.GetString("ATTENTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Изменить вопрос.
+        /// </summary>
+        internal static string CHANGE_QUESTION {
+            get {
+                return ResourceManager.GetString("CHANGE_QUESTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на currentUser.
         /// </summary>
         internal static string CURRENT_USER {
@@ -70,11 +106,146 @@ namespace simpleTestingSystem.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Редактировать ответа.
+        /// </summary>
+        internal static string EDIT_ANSWER {
+            get {
+                return ResourceManager.GetString("EDIT_ANSWER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ошибка!.
+        /// </summary>
+        internal static string ERROR {
+            get {
+                return ResourceManager.GetString("ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Отлично.
+        /// </summary>
+        internal static string EXCELLENT_MARK {
+            get {
+                return ResourceManager.GetString("EXCELLENT_MARK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Файл с тестами не найден, либо повреждён!.
+        /// </summary>
+        internal static string FILE_NOT_FOUNT_OR_DAMAGED {
+            get {
+                return ResourceManager.GetString("FILE_NOT_FOUNT_OR_DAMAGED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на questions.dat.
         /// </summary>
-        internal static string fileQuestion {
+        internal static string FILE_QUESTIONS {
             get {
-                return ResourceManager.GetString("fileQuestion", resourceCulture);
+                return ResourceManager.GetString("FILE_QUESTIONS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на users.dat.
+        /// </summary>
+        internal static string FILE_USERS {
+            get {
+                return ResourceManager.GetString("FILE_USERS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Необходимо выбрать вариант ответа.
+        /// </summary>
+        internal static string NEED_SELECTED_ANSWER {
+            get {
+                return ResourceManager.GetString("NEED_SELECTED_ANSWER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Удовлетворительно.
+        /// </summary>
+        internal static string SATISFACTORILY_MARK {
+            get {
+                return ResourceManager.GetString("SATISFACTORILY_MARK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Вход выполнен!\nДобрый день,{1} {0}!.
+        /// </summary>
+        internal static string SUCCESS_LOGIN {
+            get {
+                return ResourceManager.GetString("SUCCESS_LOGIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Вопросы успешно сохранены!.
+        /// </summary>
+        internal static string SUCCESS_SAVED_QUESTIONS {
+            get {
+                return ResourceManager.GetString("SUCCESS_SAVED_QUESTIONS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Неудовлетворительно.
+        /// </summary>
+        internal static string UNSATISFACTORILY_MARK {
+            get {
+                return ResourceManager.GetString("UNSATISFACTORILY_MARK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Введёно имя пользователя уже используется другим пользователем.
+        /// </summary>
+        internal static string USERNAME_IS_ALREADY_EXIST {
+            get {
+                return ResourceManager.GetString("USERNAME_IS_ALREADY_EXIST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Хорошо.
+        /// </summary>
+        internal static string WELL_MARK {
+            get {
+                return ResourceManager.GetString("WELL_MARK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Необходимо заполнить поле вопрос, добавить минимум 2 ответа и выбрать один правильный ответ.
+        /// </summary>
+        internal static string WRONG_SET_QUESTION_FORM {
+            get {
+                return ResourceManager.GetString("WRONG_SET_QUESTION_FORM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Имя пользователя или пароль не верны.
+        /// </summary>
+        internal static string WRONG_USER_NAME_OR_PASSWORD {
+            get {
+                return ResourceManager.GetString("WRONG_USER_NAME_OR_PASSWORD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ваш результат - {0}.
+        /// </summary>
+        internal static string YOUR_RESULT {
+            get {
+                return ResourceManager.GetString("YOUR_RESULT", resourceCulture);
             }
         }
     }

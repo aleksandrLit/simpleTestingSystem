@@ -117,12 +117,76 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ADD_ANSWER" xml:space="preserve">
+    <value>Добавить новый ответ</value>
+  </data>
+  <data name="ADD_QUESTION" xml:space="preserve">
+    <value>Добавить новый вопрос</value>
+  </data>
+  <data name="ATTENTION" xml:space="preserve">
+    <value>Внимание!</value>
+  </data>
+  <data name="CHANGE_QUESTION" xml:space="preserve">
+    <value>Изменить вопрос</value>
+  </data>
   <data name="CURRENT_USER" xml:space="preserve">
     <value>currentUser</value>
     <comment>Информация о текущем пользователе</comment>
   </data>
-  <data name="fileQuestion" xml:space="preserve">
+  <data name="EDIT_ANSWER" xml:space="preserve">
+    <value>Редактировать ответа</value>
+  </data>
+  <data name="ERROR" xml:space="preserve">
+    <value>Ошибка!</value>
+  </data>
+  <data name="EXCELLENT_MARK" xml:space="preserve">
+    <value>Отлично</value>
+    <comment>Текстовая форма оценки отлично</comment>
+  </data>
+  <data name="FILE_NOT_FOUNT_OR_DAMAGED" xml:space="preserve">
+    <value>Файл с тестами не найден, либо повреждён!</value>
+  </data>
+  <data name="FILE_QUESTIONS" xml:space="preserve">
     <value>questions.dat</value>
     <comment>Наименование сериализованного файла с вопросами </comment>
+  </data>
+  <data name="FILE_USERS" xml:space="preserve">
+    <value>users.dat</value>
+    <comment>Наименование сериализованного файла с пользователями</comment>
+  </data>
+  <data name="NEED_SELECTED_ANSWER" xml:space="preserve">
+    <value>Необходимо выбрать вариант ответа</value>
+  </data>
+  <data name="SATISFACTORILY_MARK" xml:space="preserve">
+    <value>Удовлетворительно</value>
+    <comment>Текстовая форма оценки удовлетворительно</comment>
+  </data>
+  <data name="SUCCESS_LOGIN" xml:space="preserve">
+    <value>Вход выполнен!\nДобрый день,{1} {0}!</value>
+    <comment>Вход выполнен!\nДобрый день,{1} {0}!</comment>
+  </data>
+  <data name="SUCCESS_SAVED_QUESTIONS" xml:space="preserve">
+    <value>Вопросы успешно сохранены!</value>
+  </data>
+  <data name="UNSATISFACTORILY_MARK" xml:space="preserve">
+    <value>Неудовлетворительно</value>
+    <comment>Текстовая форма оценки неудовлетворительно</comment>
+  </data>
+  <data name="USERNAME_IS_ALREADY_EXIST" xml:space="preserve">
+    <value>Введёно имя пользователя уже используется другим пользователем</value>
+  </data>
+  <data name="WELL_MARK" xml:space="preserve">
+    <value>Хорошо</value>
+    <comment>Текстовая форма оценки хорошо</comment>
+  </data>
+  <data name="WRONG_SET_QUESTION_FORM" xml:space="preserve">
+    <value>Необходимо заполнить поле вопрос, добавить минимум 2 ответа и выбрать один правильный ответ</value>
+  </data>
+  <data name="WRONG_USER_NAME_OR_PASSWORD" xml:space="preserve">
+    <value>Имя пользователя или пароль не верны</value>
+    <comment>Имя пользователя или пароль не верны</comment>
+  </data>
+  <data name="YOUR_RESULT" xml:space="preserve">
+    <value>Ваш результат - {0}</value>
   </data>
 </root>

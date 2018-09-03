@@ -7,7 +7,7 @@ using simpleTestingSystem.Utils;
 
 namespace simpleTestingSystem.Models
 {
-    class TestingReport
+    public class TestingReport
     {
         public string firstName { get; set; }
         public string lastName { set; get; }

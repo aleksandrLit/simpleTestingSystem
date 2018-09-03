@@ -13,17 +13,12 @@ namespace simpleTestingSystem.Services
 
         public UserService()
         {
-            //Реализация только для тестирования функционала
-            users = new List<User>();
-            users.Add(new User { usernName = "root", password = "root", firstName = "Администратор", isSuperuser = true });
-            users.Add(new User { usernName = "tester1", password = "tester1", firstName = "Иван", lastName = "Иванов", middleName = "Иванович", isSuperuser = false });
-            users.Add(new User { usernName = "tester2", password = "tester2", firstName = "Пётр", lastName = "Петров", middleName = "Петрович", isSuperuser = false });
-
-        }
-
-        public void setUsers(List<User> users)
-        {
-            this.users = users;
+            users = deserializeUsers();
+            User superUser = getSuperUser();
+            if (!isExistUserWithUsername(superUser.userName))
+            {
+                users.Add(superUser);
+            }
         }
 
         public void createUser(User user)
@@ -35,7 +30,7 @@ namespace simpleTestingSystem.Services
         {
             foreach (User user in users)
             {
-                if (user.usernName.Equals(userName) && user.password.Equals(password))
+                if (user.userName.Equals(userName) && user.password.Equals(password))
                 {
                     return user;
                 }
@@ -46,6 +41,44 @@ namespace simpleTestingSystem.Services
         public List<User> getUsers()
         {
             return users;
+        }
+
+        public bool isExistUserWithUsername(string username)
+        {
+            foreach(User user in users)
+            {
+                if (user.userName.Equals(username))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public void serializeUsers()
+        {
+            SerializeUtils.serialize(users.ToArray(), Properties.Resources.FILE_USERS);
+        }
+
+        private List<User> deserializeUsers()
+        {
+            List<User> users = null;
+            var deserializeResult = SerializeUtils.deserialize(Properties.Resources.FILE_USERS);
+            if (deserializeResult == null || !(deserializeResult is User[]))
+            {
+                users = new List<User>();
+            }
+            else
+            {
+                users = ((User[])deserializeResult).ToList();
+            }
+            return users;
+        }
+
+        private User getSuperUser()
+        {
+            return new User { userName = "root", password = "root", firstName = "Администратор", isSuperuser = true };
+
         }
     }
 }

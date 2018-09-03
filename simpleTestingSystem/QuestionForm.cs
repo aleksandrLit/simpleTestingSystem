@@ -34,7 +34,7 @@ namespace simpleTestingSystem
         {
             if (question != null)
             {
-                textBox1.Text = question.textQuestion;
+                questionTextBox.Text = question.textQuestion;
                 fillAnswerList(question.answers, question.correctAnswerNumber);
             }
         }
@@ -45,22 +45,22 @@ namespace simpleTestingSystem
             {
                 for (int i = 0; i < answers.Count; i++)
                 {
-                    checkedListBox1.Items.Add(answers[i], numberCorrectAnswer == i);
+                    answersCheckedListBox.Items.Add(answers[i], numberCorrectAnswer == i);
                 }
             }
         }
 
-        private void button1_MouseClick(object sender, MouseEventArgs e)
+        private void saveQuestionButton_MouseClick(object sender, MouseEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(textBox1.Text) || ((CheckedListBox)checkedListBox1).Items.Count < 2
-                || checkedListBox1.CheckedIndices.Count == 0)
+            if (string.IsNullOrWhiteSpace(questionTextBox.Text) || ((CheckedListBox)answersCheckedListBox).Items.Count < 2
+                || answersCheckedListBox.CheckedIndices.Count == 0)
             {
-                MessageBox.Show("Необходимо заполнить поле вопрос, добавить минимум 2 ответа и выбрать один правильный ответ", "Внимание!");
+                MessageBox.Show(Properties.Resources.WRONG_SET_QUESTION_FORM, Properties.Resources.ATTENTION);
                 return;
             }
             question = new TestQuestion();
-            question.textQuestion = textBox1.Text.Trim();
-            question.answers = checkedListBox1.Items.Cast<string>().ToList();
+            question.textQuestion = questionTextBox.Text.Trim();
+            question.answers = answersCheckedListBox.Items.Cast<string>().ToList();
             fillCorrectAnswer();
             this.DialogResult = DialogResult.OK;
             this.Close();
@@ -68,54 +68,54 @@ namespace simpleTestingSystem
 
         private void fillCorrectAnswer()
         {
-            if (checkedListBox1.CheckedIndices != null && checkedListBox1.CheckedIndices.Count != 0)
+            if (answersCheckedListBox.CheckedIndices != null && answersCheckedListBox.CheckedIndices.Count != 0)
             {
-                question.correctAnswerNumber = checkedListBox1.CheckedIndices[0];
+                question.correctAnswerNumber = answersCheckedListBox.CheckedIndices[0];
             }
         }
 
-        private void checkedListBox1_ItemCheck(object sender, ItemCheckEventArgs e)
+        private void answersCheckedListBox_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             if (CheckState.Checked.Equals(e.NewValue))
             {
                 if (lastCheckedIndex != null && !e.Index.Equals(lastCheckedIndex))
                 {
-                    checkedListBox1.SetItemChecked(lastCheckedIndex.Value, false);
+                    answersCheckedListBox.SetItemChecked(lastCheckedIndex.Value, false);
                 } 
                 lastCheckedIndex = e.Index;                             
             }
         }
 
-        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void answersCheckedListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             bool isSelectedSomeItem = ((CheckedListBox)sender).SelectedItem != null;
-            button3.Enabled = isSelectedSomeItem;
-            button4.Enabled = isSelectedSomeItem;
+            editAnswerButton.Enabled = isSelectedSomeItem;
+            removeAnswerButton.Enabled = isSelectedSomeItem;
         }
 
-        private void button4_MouseClick(object sender, MouseEventArgs e)
+        private void removeAnswerButton_MouseClick(object sender, MouseEventArgs e)
         {
-            if (checkedListBox1.SelectedItem != null)
+            if (answersCheckedListBox.SelectedItem != null)
             {
-                if (checkedListBox1.SelectedIndex.Equals(lastCheckedIndex))
+                if (answersCheckedListBox.SelectedIndex.Equals(lastCheckedIndex))
                 {
                     lastCheckedIndex = null;
                 }
-                checkedListBox1.Items.Remove(checkedListBox1.SelectedItem);
+                answersCheckedListBox.Items.Remove(answersCheckedListBox.SelectedItem);
             }
         }
 
-        private void button2_MouseClick(object sender, MouseEventArgs e)
+        private void addAnswerButton_MouseClick(object sender, MouseEventArgs e)
         {
             createAnswerForm();
         }
 
-        private void button3_MouseClick(object sender, MouseEventArgs e)
+        private void editAnswerButton_MouseClick(object sender, MouseEventArgs e)
         {
-            if (checkedListBox1.SelectedItem != null)
+            if (answersCheckedListBox.SelectedItem != null)
             {
-                string currentAnswer = (string) checkedListBox1.SelectedItem;
-                createAnswerForm(currentAnswer, checkedListBox1.SelectedIndex);
+                string currentAnswer = (string) answersCheckedListBox.SelectedItem;
+                createAnswerForm(currentAnswer, answersCheckedListBox.SelectedIndex);
             }
         }
 
@@ -125,17 +125,17 @@ namespace simpleTestingSystem
             using (var answerForm = new AnswerForm(answer))
             {
                 
-                answerForm.Text = answer == null ? "Добавить новый ответ" : "Редактировать ответа";
+                answerForm.Text = answer == null ? Properties.Resources.ADD_ANSWER : Properties.Resources.EDIT_ANSWER;
                 var result = answerForm.ShowDialog();
                 if (DialogResult.OK.Equals(result))
                 {
                     if (answerIndex != null && answerIndex.HasValue)
                     {
-                        checkedListBox1.Items[answerIndex.Value] = answerForm.currentAnswer;
+                        answersCheckedListBox.Items[answerIndex.Value] = answerForm.currentAnswer;
                     }
                     else
                     {
-                        checkedListBox1.Items.Add(answerForm.currentAnswer);
+                        answersCheckedListBox.Items.Add(answerForm.currentAnswer);
                     }
                 }
                 this.Show();

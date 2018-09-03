@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace simpleTestingSystem.Utils
 {
-    class Pair<L, R>
+    public class Pair<L, R>
     {
         public L Left { get; set; }
         public R Right { get; set; }

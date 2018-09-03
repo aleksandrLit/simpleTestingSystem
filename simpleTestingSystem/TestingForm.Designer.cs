@@ -28,56 +28,56 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.previousQuestionButton = new System.Windows.Forms.Button();
+            this.nextQuestionButton = new System.Windows.Forms.Button();
+            this.answersCheckedListBox = new System.Windows.Forms.CheckedListBox();
+            this.questionTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.setAnswersProgressBar = new System.Windows.Forms.ProgressBar();
+            this.giveAnswerButton = new System.Windows.Forms.Button();
+            this.endTestingButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // previousQuestionButton
             // 
-            this.button1.Location = new System.Drawing.Point(237, 350);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(206, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Предыдущий вопрос";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button1_MouseClick);
+            this.previousQuestionButton.Location = new System.Drawing.Point(237, 350);
+            this.previousQuestionButton.Name = "previousQuestionButton";
+            this.previousQuestionButton.Size = new System.Drawing.Size(206, 23);
+            this.previousQuestionButton.TabIndex = 0;
+            this.previousQuestionButton.Text = "Предыдущий вопрос";
+            this.previousQuestionButton.UseVisualStyleBackColor = true;
+            this.previousQuestionButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.previosQuestionButton_MouseClick);
             // 
-            // button2
+            // nextQuestionButton
             // 
-            this.button2.Location = new System.Drawing.Point(449, 350);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(188, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Следующий вопрос";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button2_MouseClick);
+            this.nextQuestionButton.Location = new System.Drawing.Point(449, 350);
+            this.nextQuestionButton.Name = "nextQuestionButton";
+            this.nextQuestionButton.Size = new System.Drawing.Size(188, 23);
+            this.nextQuestionButton.TabIndex = 1;
+            this.nextQuestionButton.Text = "Следующий вопрос";
+            this.nextQuestionButton.UseVisualStyleBackColor = true;
+            this.nextQuestionButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.nextQuestionsButton_MouseClick);
             // 
-            // checkedListBox1
+            // answersCheckedListBox
             // 
-            this.checkedListBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.HorizontalScrollbar = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(12, 116);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(625, 191);
-            this.checkedListBox1.TabIndex = 2;
-            this.checkedListBox1.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBox1_ItemCheck);
+            this.answersCheckedListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.answersCheckedListBox.FormattingEnabled = true;
+            this.answersCheckedListBox.HorizontalScrollbar = true;
+            this.answersCheckedListBox.Location = new System.Drawing.Point(12, 116);
+            this.answersCheckedListBox.Name = "answersCheckedListBox";
+            this.answersCheckedListBox.Size = new System.Drawing.Size(625, 191);
+            this.answersCheckedListBox.TabIndex = 2;
+            this.answersCheckedListBox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.answersCheckedListBox_ItemCheck);
             // 
-            // textBox1
+            // questionTextBox
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(12, 27);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(625, 68);
-            this.textBox1.TabIndex = 3;
+            this.questionTextBox.Enabled = false;
+            this.questionTextBox.Location = new System.Drawing.Point(12, 27);
+            this.questionTextBox.Multiline = true;
+            this.questionTextBox.Name = "questionTextBox";
+            this.questionTextBox.Size = new System.Drawing.Size(625, 68);
+            this.questionTextBox.TabIndex = 3;
             // 
             // label1
             // 
@@ -97,48 +97,48 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Вопрос:";
             // 
-            // progressBar1
+            // setAnswersProgressBar
             // 
-            this.progressBar1.Location = new System.Drawing.Point(12, 321);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(431, 23);
-            this.progressBar1.TabIndex = 6;
+            this.setAnswersProgressBar.Location = new System.Drawing.Point(12, 321);
+            this.setAnswersProgressBar.Name = "setAnswersProgressBar";
+            this.setAnswersProgressBar.Size = new System.Drawing.Size(431, 23);
+            this.setAnswersProgressBar.TabIndex = 6;
             // 
-            // button3
+            // giveAnswerButton
             // 
-            this.button3.Location = new System.Drawing.Point(449, 321);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(188, 23);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Ответить";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button3_MouseClick);
+            this.giveAnswerButton.Location = new System.Drawing.Point(449, 321);
+            this.giveAnswerButton.Name = "giveAnswerButton";
+            this.giveAnswerButton.Size = new System.Drawing.Size(188, 23);
+            this.giveAnswerButton.TabIndex = 7;
+            this.giveAnswerButton.Text = "Ответить";
+            this.giveAnswerButton.UseVisualStyleBackColor = true;
+            this.giveAnswerButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.giveAnswerButton_MouseClick);
             // 
-            // button4
+            // endTestingButton
             // 
-            this.button4.Enabled = false;
-            this.button4.Location = new System.Drawing.Point(16, 350);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(215, 23);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "Завершить тестирование";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button4_MouseClick);
+            this.endTestingButton.Enabled = false;
+            this.endTestingButton.Location = new System.Drawing.Point(16, 350);
+            this.endTestingButton.Name = "endTestingButton";
+            this.endTestingButton.Size = new System.Drawing.Size(215, 23);
+            this.endTestingButton.TabIndex = 8;
+            this.endTestingButton.Text = "Завершить тестирование";
+            this.endTestingButton.UseVisualStyleBackColor = true;
+            this.endTestingButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.endTestingButton_MouseClick);
             // 
             // TestingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(649, 385);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.endTestingButton);
+            this.Controls.Add(this.giveAnswerButton);
+            this.Controls.Add(this.setAnswersProgressBar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.checkedListBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.questionTextBox);
+            this.Controls.Add(this.answersCheckedListBox);
+            this.Controls.Add(this.nextQuestionButton);
+            this.Controls.Add(this.previousQuestionButton);
             this.Name = "TestingForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Форма тестирования";
@@ -149,14 +149,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button previousQuestionButton;
+        private System.Windows.Forms.Button nextQuestionButton;
+        private System.Windows.Forms.CheckedListBox answersCheckedListBox;
+        private System.Windows.Forms.TextBox questionTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.ProgressBar setAnswersProgressBar;
+        private System.Windows.Forms.Button giveAnswerButton;
+        private System.Windows.Forms.Button endTestingButton;
     }
 }

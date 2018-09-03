@@ -2,12 +2,7 @@
 using simpleTestingSystem.Services;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace simpleTestingSystem
@@ -36,19 +31,19 @@ namespace simpleTestingSystem
                 currentQuestionIndex = 0;
                 currentQuestion = randomizeQuestion[currentQuestionIndex];
                 renderQuestion(currentQuestion);
-                progressBar1.Value = 0;
-                progressBar1.Maximum = randomizeQuestion.Count;
-                progressBar1.Step = 1;
+                setAnswersProgressBar.Value = 0;
+                setAnswersProgressBar.Maximum = randomizeQuestion.Count;
+                setAnswersProgressBar.Step = 1;
             }
         }
 
         private List<TestQuestion> getTestQuestions()
         {
             List<TestQuestion> questions = null;
-            var deserializeResult = SerializeUtils.deserialize(Properties.Resources.ResourceManager.GetString(FILE_QUESTION));
+            var deserializeResult = SerializeUtils.deserialize(Properties.Resources.FILE_QUESTIONS);
             if (deserializeResult == null || !(deserializeResult is TestQuestion[]))
             {
-                MessageBox.Show("Файл с тестами не найден, либо повреждён!", "Ошибка!");
+                MessageBox.Show(Properties.Resources.FILE_NOT_FOUNT_OR_DAMAGED, Properties.Resources.ERROR);
                 this.Close();
             }
             else
@@ -58,13 +53,13 @@ namespace simpleTestingSystem
             return questions;            
         }
 
-        private void checkedListBox1_ItemCheck(object sender, ItemCheckEventArgs e)
+        private void answersCheckedListBox_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             if (CheckState.Checked.Equals(e.NewValue))
             {
                 if (lastCheckedIndex != null && !e.Index.Equals(lastCheckedIndex))
                 {
-                    checkedListBox1.SetItemChecked(lastCheckedIndex.Value, false);
+                    answersCheckedListBox.SetItemChecked(lastCheckedIndex.Value, false);
                 }
                 lastCheckedIndex = e.Index;
             }
@@ -95,19 +90,19 @@ namespace simpleTestingSystem
         private void renderQuestion(TestQuestion question)
         {
             lastCheckedIndex = null;
-            textBox1.Text = currentQuestion.textQuestion;
-            checkedListBox1.Items.Clear();
-            checkedListBox1.Items.AddRange(currentQuestion.answers.ToArray());
+            questionTextBox.Text = currentQuestion.textQuestion;
+            answersCheckedListBox.Items.Clear();
+            answersCheckedListBox.Items.AddRange(currentQuestion.answers.ToArray());
             if(userAnswers.ContainsKey(currentQuestionIndex))
             {
                 lastCheckedIndex = userAnswers[currentQuestionIndex];
-                checkedListBox1.SetItemChecked(lastCheckedIndex.Value, true);
+                answersCheckedListBox.SetItemChecked(lastCheckedIndex.Value, true);
                 
             }
             refreshComponents();
         }
 
-        private void button1_MouseClick(object sender, MouseEventArgs e)
+        private void previosQuestionButton_MouseClick(object sender, MouseEventArgs e)
         {
             if (getPreviosQuestion() != null)
             {
@@ -115,7 +110,7 @@ namespace simpleTestingSystem
             }
         }
 
-        private void button2_MouseClick(object sender, MouseEventArgs e)
+        private void nextQuestionsButton_MouseClick(object sender, MouseEventArgs e)
         {
             if (getNextQuestion() != null)
             {
@@ -123,22 +118,22 @@ namespace simpleTestingSystem
             }
         }
 
-        private void button3_MouseClick(object sender, MouseEventArgs e)
+        private void giveAnswerButton_MouseClick(object sender, MouseEventArgs e)
         {
-            if (checkedListBox1.CheckedIndices.Count != 0)
+            if (answersCheckedListBox.CheckedIndices.Count != 0)
             {
                 if (userAnswers.ContainsKey(currentQuestionIndex))
                 {
-                    userAnswers[currentQuestionIndex] = checkedListBox1.CheckedIndices[0];
+                    userAnswers[currentQuestionIndex] = answersCheckedListBox.CheckedIndices[0];
                 }
                 else
                 {
-                    userAnswers.Add(currentQuestionIndex, checkedListBox1.CheckedIndices[0]);
-                    progressBar1.PerformStep();
+                    userAnswers.Add(currentQuestionIndex, answersCheckedListBox.CheckedIndices[0]);
+                    setAnswersProgressBar.PerformStep();
                 }
                 if (isUserAnsweredAllQuestions())
                 {
-                    button4.Enabled = true;
+                    endTestingButton.Enabled = true;
                 } 
                 else if (getNextQuestion() != null)
                 {
@@ -147,14 +142,14 @@ namespace simpleTestingSystem
             }
             else
             {
-                MessageBox.Show("Необходимо выбрать вариант ответа", "Внимание!");
+                MessageBox.Show(Properties.Resources.NEED_SELECTED_ANSWER, Properties.Resources.ATTENTION);
             }
         }
 
-        private void button4_MouseClick(object sender, MouseEventArgs e)
+        private void endTestingButton_MouseClick(object sender, MouseEventArgs e)
         {
             string markInText = testingService.getMarkInText(testingService.calculateResult(userAnswers, randomizeQuestion));
-            MessageBox.Show(string.Format("Ваш результат - {0} ", markInText));
+            MessageBox.Show(string.Format(Properties.Resources.YOUR_RESULT, markInText));
             TestingReport report = fillTesingReport(markInText);
             testingService.writeTextInfoResult(report);
             this.Close();
@@ -167,8 +162,8 @@ namespace simpleTestingSystem
 
         private void refreshComponents()
         {
-            textBox1.Refresh();
-            checkedListBox1.Refresh();
+            questionTextBox.Refresh();
+            answersCheckedListBox.Refresh();
         }
 
         private TestingReport fillTesingReport(string markInText)

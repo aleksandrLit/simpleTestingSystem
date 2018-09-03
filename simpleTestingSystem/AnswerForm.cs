@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace simpleTestingSystem
@@ -26,24 +19,24 @@ namespace simpleTestingSystem
             fillForm();
         }
 
-        private void button1_MouseClick(object sender, MouseEventArgs e)
+        private void saveAnswerButton_MouseClick(object sender, MouseEventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(textBox1.Text))
+            if (!string.IsNullOrWhiteSpace(answerTextBox.Text))
             {
-                currentAnswer = textBox1.Text.Trim();
+                currentAnswer = answerTextBox.Text.Trim();
                 this.DialogResult = DialogResult.OK;
             }
             this.Close();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void answerTextBox_TextChanged(object sender, EventArgs e)
         {
-            button1.Enabled = !string.IsNullOrWhiteSpace(textBox1.Text);
+            saveAnswerButton.Enabled = !string.IsNullOrWhiteSpace(answerTextBox.Text);
         }
 
         private void fillForm()
         {
-            textBox1.Text = currentAnswer;
+            answerTextBox.Text = currentAnswer;
         }
     }
 }

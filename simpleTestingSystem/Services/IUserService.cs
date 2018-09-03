@@ -1,17 +1,14 @@
 ﻿using simpleTestingSystem.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace simpleTestingSystem.Services
 {
-    interface IUserService
+    public interface IUserService
     {
-        User getUserByUsernameAndPassword(String userName, String password);
+        User getUserByUsernameAndPassword(string userName, string password);
+        bool isExistUserWithUsername(string username);
         void createUser(User user);
-        void setUsers(List<User> users);
         List<User> getUsers();
+        void serializeUsers();
     }
 }

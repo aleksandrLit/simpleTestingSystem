@@ -18,7 +18,7 @@ namespace simpleTestingSystem
             logger.Info("Application start");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new AuthenticationForm());
             logger.Info("Application close");
         }
     }
