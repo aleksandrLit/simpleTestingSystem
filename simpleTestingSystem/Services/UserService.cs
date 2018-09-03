@@ -11,6 +11,13 @@ namespace simpleTestingSystem.Services
     {
         List<User> users;
 
+        public UserService()
+        {
+            users = new List<User>();
+            users.Add(new User { usernName = "root", password = "root", firstName = "Администратор", isSuperuser = true });
+            users.Add(new User { usernName = "tester1", password = "tester1", firstName = "Иван", lastName = "Иванов", middleName = "Иванович", isSuperuser = false });
+        }
+
         public void setUsers(List<User> users)
         {
             this.users = users;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace simpleTestingSystem.Models
 {
-    class User
+    public class User
     {
         public String usernName { get; set; }
         public String password { get; set; }

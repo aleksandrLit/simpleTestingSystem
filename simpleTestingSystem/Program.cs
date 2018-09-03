@@ -8,15 +8,18 @@ namespace simpleTestingSystem
 {
     static class Program
     {
+        private static log4net.ILog logger = log4net.LogManager.GetLogger(typeof(Program));
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
         [STAThread]
         static void Main()
         {
+            logger.Info("Application start");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+            logger.Info("Application close");
         }
     }
 }

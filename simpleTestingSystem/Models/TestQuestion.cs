@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 namespace simpleTestingSystem.Models
 {
     [Serializable]
-    class TestQuestion
+    public  class TestQuestion
     {
+        public int testId { get; set; }
         public String textQuestion { get; set; }
         public List<String> answers { get; set; }
         public int correctAnswerNumber { get; set; }

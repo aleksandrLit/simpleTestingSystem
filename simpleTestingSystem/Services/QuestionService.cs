@@ -9,7 +9,7 @@ namespace simpleTestingSystem.Services
 {
     class QuestionService : IQuestionService
     {
-        Dictionary<int, TestQuestion> questions;
+        Dictionary<int, TestQuestion> questions = new Dictionary<int, TestQuestion>();
         int lastQuestionid = 0;
     
         public QuestionService() { }

@@ -11,5 +11,7 @@ namespace simpleTestingSystem.Services
     {
         User getUserByUsernameAndPassword(String userName, String password);
         void createUser(User user);
+        void setUsers(List<User> users);
+        List<User> getUsers();
     }
 }
