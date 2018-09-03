@@ -117,6 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CURRENT_USER" xml:space="preserve">
+    <value>currentUser</value>
+    <comment>Информация о текущем пользователе</comment>
+  </data>
   <data name="fileQuestion" xml:space="preserve">
     <value>questions.dat</value>
     <comment>Наименование сериализованного файла с вопросами </comment>

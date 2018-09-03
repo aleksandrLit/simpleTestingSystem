@@ -17,7 +17,6 @@ namespace simpleTestingSystem
 
         private readonly log4net.ILog logger = log4net.LogManager.GetLogger(typeof(Form1));
 
-
         IUserService userService;
 
         private List<User> users { set; get; }
@@ -49,8 +48,10 @@ namespace simpleTestingSystem
             User user = userService.getUserByUsernameAndPassword(textBox1.Text, textBox2.Text);
             if (user != null)
             {
+                textBox2.Text = "";
                 MessageBox.Show(string.Format("Вход выполнен!\nДобрый день,{1} {0}!", user.firstName, user.lastName));
                 this.Hide();
+                setCurrentUser(user);
                 using (var nextForm = user.isSuperuser ? (Form)new AdministrationForm() : new TestingForm())
                 {
                     if (!nextForm.IsDisposed)
@@ -62,6 +63,17 @@ namespace simpleTestingSystem
             } else
             {
                 MessageBox.Show(string.Format("Имя пользователя или пароль не верны"));
+            }
+        }
+
+        private void setCurrentUser(User user)
+        {
+            if (Properties.Settings.Default.Context[Properties.Resources.CURRENT_USER] != null)
+            {
+                Properties.Settings.Default.Context[Properties.Resources.CURRENT_USER] = user;
+            } else
+            {
+                Properties.Settings.Default.Context.Add(Properties.Resources.CURRENT_USER, user);
             }
         }
     }

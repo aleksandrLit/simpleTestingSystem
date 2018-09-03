@@ -30,7 +30,7 @@ namespace simpleTestingSystem
         {
             if (!string.IsNullOrWhiteSpace(textBox1.Text))
             {
-                currentAnswer = textBox1.Text;
+                currentAnswer = textBox1.Text.Trim();
                 this.DialogResult = DialogResult.OK;
             }
             this.Close();

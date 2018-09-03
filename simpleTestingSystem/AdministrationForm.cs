@@ -43,7 +43,11 @@ namespace simpleTestingSystem
         {
             listBox1.DataSource = questions;
             listBox1.DisplayMember = "textQuestion";
-            listBox1.ValueMember = "testId";
+        }
+
+        private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            button2_MouseClick(sender, e);
         }
 
         private void button1_MouseClick(object sender, MouseEventArgs e)
@@ -83,11 +87,6 @@ namespace simpleTestingSystem
             questions.Remove((TestQuestion)listBox1.SelectedItem);
         }
 
-        private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            button2_MouseClick(sender, e);
-        }
-
         private void button4_MouseClick(object sender, MouseEventArgs e)
         {
             TestQuestion[] testQuestions = questions.ToArray();
@@ -99,8 +98,13 @@ namespace simpleTestingSystem
 
         private List<TestQuestion> loadQuestion()
         {
-            object deserializeObject = SerializeUtils.deserialize(Properties.Resources.ResourceManager.GetString(FILE_QUESTION));
-            return ((TestQuestion[])deserializeObject).ToList();
+            List<TestQuestion> questions = new List<TestQuestion>();
+            if (File.Exists(Properties.Resources.ResourceManager.GetString(FILE_QUESTION)))
+            {
+                object deserializeObject = SerializeUtils.deserialize(Properties.Resources.ResourceManager.GetString(FILE_QUESTION));
+                questions = ((TestQuestion[])deserializeObject).ToList();
+            }
+            return questions;
         }
     }
 }

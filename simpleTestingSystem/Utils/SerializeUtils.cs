@@ -25,15 +25,22 @@ namespace simpleTestingSystem.Services
         public static object deserialize(string fileName)
         {
             object deserializeObjects = null;
-            using (FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate))
+            if (!File.Exists(fileName))
             {
-                try
+                logger.Error(string.Format("Deserialize file with name-'{0}' not found", fileName));
+            }
+            else
+            {
+                using (FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate))
                 {
-                    deserializeObjects = formatter.Deserialize(fs);
-                }
-                catch (SerializationException e)
-                {
-                    logger.Error("Deserialize file not found " + e.StackTrace);
+                    try
+                    {
+                        deserializeObjects = formatter.Deserialize(fs);
+                    }
+                    catch (SerializationException e)
+                    {
+                        logger.Error(string.Format("Something went wrong when the file-'{0}' was deserialized " + e.StackTrace, fileName));
+                    }
                 }
             }
             return deserializeObjects;

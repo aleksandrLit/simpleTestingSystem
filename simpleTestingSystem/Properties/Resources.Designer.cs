@@ -61,6 +61,15 @@ namespace simpleTestingSystem.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на currentUser.
+        /// </summary>
+        internal static string CURRENT_USER {
+            get {
+                return ResourceManager.GetString("CURRENT_USER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на questions.dat.
         /// </summary>
         internal static string fileQuestion {

@@ -153,8 +153,10 @@ namespace simpleTestingSystem
 
         private void button4_MouseClick(object sender, MouseEventArgs e)
         {
-            double markInProcent = testingService.calculateResult(userAnswers, randomizeQuestion);
-            MessageBox.Show(string.Format("Ваш результат - {0} ", testingService.getMarkInText(markInProcent)));
+            string markInText = testingService.getMarkInText(testingService.calculateResult(userAnswers, randomizeQuestion));
+            MessageBox.Show(string.Format("Ваш результат - {0} ", markInText));
+            TestingReport report = fillTesingReport(markInText);
+            testingService.writeTextInfoResult(report);
             this.Close();
         }
 
@@ -167,6 +169,18 @@ namespace simpleTestingSystem
         {
             textBox1.Refresh();
             checkedListBox1.Refresh();
+        }
+
+        private TestingReport fillTesingReport(string markInText)
+        {
+            TestingReport report = new TestingReport();
+            User currentUser = (User) Properties.Settings.Default.Context[Properties.Resources.CURRENT_USER];
+            report.firstName = currentUser.firstName;
+            report.lastName = currentUser.lastName;
+            report.middleName = currentUser.middleName;
+            report.mark = markInText;
+            report.questionAnswerPair = testingService.fillPairQuestionAnswer(randomizeQuestion, userAnswers);
+            return report;
         }
     }
 }

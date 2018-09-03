@@ -59,7 +59,7 @@ namespace simpleTestingSystem
                 return;
             }
             question = new TestQuestion();
-            question.textQuestion = textBox1.Text;
+            question.textQuestion = textBox1.Text.Trim();
             question.answers = checkedListBox1.Items.Cast<string>().ToList();
             fillCorrectAnswer();
             this.DialogResult = DialogResult.OK;

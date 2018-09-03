@@ -69,6 +69,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\TestingReport.cs" />
     <Compile Include="Models\TestQuestion.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
@@ -83,7 +84,8 @@
     <Compile Include="Services\ITestingService.cs" />
     <Compile Include="Services\IUserService.cs" />
     <Compile Include="Services\QuestionService.cs" />
-    <Compile Include="Services\SerializeUtils.cs" />
+    <Compile Include="Utils\Pair.cs" />
+    <Compile Include="Utils\SerializeUtils.cs" />
     <Compile Include="Services\TestingService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="TestingForm.cs">
@@ -136,6 +138,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
