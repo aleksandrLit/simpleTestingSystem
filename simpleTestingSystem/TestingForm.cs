@@ -17,40 +17,42 @@ namespace simpleTestingSystem
         private int currentQuestionIndex;
         private TestQuestion currentQuestion;
         private Nullable<int> lastCheckedIndex = null;
+        private IQuestionService questionService;
 
 
-        public TestingForm()
+        public TestingForm(IQuestionService questionService)
         {
             InitializeComponent();
             userAnswers = new Dictionary<int, int>();
             testingService = new TestingService();
-            List<TestQuestion> questions = getTestQuestions();
-            if (questions != null)
+            this.questionService = questionService;
+            List<TestQuestion> questions = questionService.getQuestion();
+            if (isListNotNullAndHaveItems(questions))
             {
-                randomizeQuestion = testingService.randomizeQuestionList(questions);
-                currentQuestionIndex = 0;
-                currentQuestion = randomizeQuestion[currentQuestionIndex];
-                renderQuestion(currentQuestion);
-                setAnswersProgressBar.Value = 0;
-                setAnswersProgressBar.Maximum = randomizeQuestion.Count;
-                setAnswersProgressBar.Step = 1;
+                prepareForm(questions);
             }
-        }
-
-        private List<TestQuestion> getTestQuestions()
-        {
-            List<TestQuestion> questions = null;
-            var deserializeResult = SerializeUtils.deserialize(Properties.Resources.FILE_QUESTIONS);
-            if (deserializeResult == null || !(deserializeResult is TestQuestion[]))
+            else
             {
                 MessageBox.Show(Properties.Resources.FILE_NOT_FOUNT_OR_DAMAGED, Properties.Resources.ERROR);
                 this.Close();
             }
-            else
-            {
-                questions = ((TestQuestion[])deserializeResult).ToList();
-            }
-            return questions;            
+
+        }
+
+        private bool isListNotNullAndHaveItems<T>(List<T> list)
+        {
+            return list != null && list.Any();
+        }
+
+        private void prepareForm(List<TestQuestion> questions)
+        {
+            randomizeQuestion = testingService.randomizeQuestionList(questions);
+            currentQuestionIndex = 0;
+            currentQuestion = randomizeQuestion[currentQuestionIndex];
+            renderQuestion(currentQuestion);
+            setAnswersProgressBar.Value = 0;
+            setAnswersProgressBar.Maximum = randomizeQuestion.Count;
+            setAnswersProgressBar.Step = 1;
         }
 
         private void answersCheckedListBox_ItemCheck(object sender, ItemCheckEventArgs e)
@@ -93,11 +95,11 @@ namespace simpleTestingSystem
             questionTextBox.Text = currentQuestion.textQuestion;
             answersCheckedListBox.Items.Clear();
             answersCheckedListBox.Items.AddRange(currentQuestion.answers.ToArray());
-            if(userAnswers.ContainsKey(currentQuestionIndex))
+            if (userAnswers.ContainsKey(currentQuestionIndex))
             {
                 lastCheckedIndex = userAnswers[currentQuestionIndex];
                 answersCheckedListBox.SetItemChecked(lastCheckedIndex.Value, true);
-                
+
             }
             refreshComponents();
         }
@@ -134,7 +136,7 @@ namespace simpleTestingSystem
                 if (isUserAnsweredAllQuestions())
                 {
                     endTestingButton.Enabled = true;
-                } 
+                }
                 else if (getNextQuestion() != null)
                 {
                     renderQuestion(currentQuestion);
@@ -169,7 +171,7 @@ namespace simpleTestingSystem
         private TestingReport fillTesingReport(string markInText)
         {
             TestingReport report = new TestingReport();
-            User currentUser = (User) Properties.Settings.Default.Context[Properties.Resources.CURRENT_USER];
+            User currentUser = (User)Properties.Settings.Default.Context[Properties.Resources.CURRENT_USER];
             report.firstName = currentUser.firstName;
             report.lastName = currentUser.lastName;
             report.middleName = currentUser.middleName;

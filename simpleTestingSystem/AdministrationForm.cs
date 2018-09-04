@@ -21,11 +21,11 @@ namespace simpleTestingSystem
         TestQuestion selectedItem;
         BindingList<TestQuestion> questions;
 
-        public AdministrationForm()
+        public AdministrationForm(IQuestionService questionService)
         {
             InitializeComponent();
-            questionService = new QuestionService();
-            questions = new BindingList<TestQuestion>(loadQuestion());
+            this.questionService = questionService;
+            questions = new BindingList<TestQuestion>(questionService.getQuestion());
             fillQuestionList(questions);
         }
 
@@ -87,22 +87,8 @@ namespace simpleTestingSystem
 
         private void saveQuestionsButton_MouseClick(object sender, MouseEventArgs e)
         {
-            TestQuestion[] testQuestions = questions.ToArray();
-            BinaryFormatter formatter = new BinaryFormatter();
-            string fileName = Properties.Resources.FILE_QUESTIONS;
-            SerializeUtils.serialize(testQuestions, fileName);
+            questionService.serializeQuestions(questions.ToList());
             MessageBox.Show(Properties.Resources.SUCCESS_SAVED_QUESTIONS);
-        }
-
-        private List<TestQuestion> loadQuestion()
-        {
-            List<TestQuestion> questions = new List<TestQuestion>();
-            if (File.Exists(Properties.Resources.FILE_QUESTIONS))
-            {
-                object deserializeObject = SerializeUtils.deserialize(Properties.Resources.FILE_QUESTIONS);
-                questions = ((TestQuestion[])deserializeObject).ToList();
-            }
-            return questions;
         }
     }
 }

@@ -12,6 +12,7 @@ namespace simpleTestingSystem
         private readonly log4net.ILog logger = log4net.LogManager.GetLogger(typeof(AuthenticationForm));
 
         IUserService userService;
+        IQuestionService questionService;
 
         private List<User> users { set; get; }
 
@@ -19,6 +20,7 @@ namespace simpleTestingSystem
         {
             InitializeComponent();
             userService = new UserService();
+            questionService = new QuestionService();
             logger.Info("Form1 start");         
         }
 
@@ -45,8 +47,8 @@ namespace simpleTestingSystem
                 passwordTextBox.Text = "";
                 MessageBox.Show(string.Format("Вход выполнен!\nДобрый день,{1} {0}!", user.firstName, user.lastName));
                 this.Hide();
-                setCurrentUserInContext(user);
-                using (var nextForm = user.isSuperuser ? (Form)new AdministrationForm() : new TestingForm())
+                fillCurrentUserInContext(user);
+                using (var nextForm = user.isSuperuser ? (Form)new AdministrationForm(questionService) : new TestingForm(questionService))
                 {
                     if (!nextForm.IsDisposed)
                     {
@@ -60,7 +62,7 @@ namespace simpleTestingSystem
             }
         }
 
-        private void setCurrentUserInContext(User user)
+        private void fillCurrentUserInContext(User user)
         {
             if (Properties.Settings.Default.Context[Properties.Resources.CURRENT_USER] != null)
             {

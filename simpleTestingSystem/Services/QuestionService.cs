@@ -1,55 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using simpleTestingSystem.Models;
+using System.IO;
 
 namespace simpleTestingSystem.Services
 {
     class QuestionService : IQuestionService
     {
-        Dictionary<int, TestQuestion> questions = new Dictionary<int, TestQuestion>();
-        int lastQuestionid = 0;
+        List<TestQuestion> questions;
     
-        public QuestionService() { }
-
-        public void addQuestion(TestQuestion question)
+        public QuestionService()
         {
-            questions.Add(lastQuestionid++, question);
-        }
-
-        public void deleteQuestion(int questionNumber)
-        {
-            questions.Remove(questionNumber);
+            questions = deserializeQuestions();
         }
 
         public List<TestQuestion> getQuestion()
         {
-            return questions.Values.ToList();
+            return questions;
         }
 
-        public void setQuestion(List<TestQuestion> questions)
+        public void serializeQuestions(List<TestQuestion> serializeQuestions)
         {
-            fillQuestionDictionary(questions);
+            questions = serializeQuestions;
+            SerializeUtils.serialize(questions.ToArray(), Properties.Resources.FILE_QUESTIONS);
         }
 
-        private void fillQuestionDictionary(List<TestQuestion> questionsList)
+        private List<TestQuestion> deserializeQuestions()
         {
-            if (questionsList == null)
+            List<TestQuestion> questions = new List<TestQuestion>();
+            if (File.Exists(Properties.Resources.FILE_QUESTIONS))
             {
-                return;
+                object deserializeObject = SerializeUtils.deserialize(Properties.Resources.FILE_QUESTIONS);
+                questions = ((TestQuestion[])deserializeObject).ToList();
             }
-            questions = new Dictionary<int, TestQuestion>(questionsList.Count);
-            foreach(TestQuestion question in questionsList)
-            {
-                questions.Add(lastQuestionid++, question);
-            } 
-        }
-
-        public void updateQuestion(TestQuestion question, int questionNumber)
-        {
-            questions[questionNumber] = question;
+            return questions;
         }
     }
 }

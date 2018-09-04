@@ -78,7 +78,6 @@ namespace simpleTestingSystem.Services
         private User getSuperUser()
         {
             return new User { userName = "root", password = "root", firstName = "Администратор", isSuperuser = true };
-
         }
     }
 }

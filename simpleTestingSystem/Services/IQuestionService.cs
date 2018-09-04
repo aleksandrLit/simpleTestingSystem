@@ -7,12 +7,9 @@ using System.Threading.Tasks;
 
 namespace simpleTestingSystem.Services
 {
-    interface IQuestionService
+    public interface IQuestionService
     {
-        void addQuestion(TestQuestion question);
-        void updateQuestion(TestQuestion question, int questionNumber);
-        void deleteQuestion(int questionNumber);
         List<TestQuestion> getQuestion();
-        void setQuestion(List<TestQuestion> questions);
+        void serializeQuestions(List<TestQuestion> questions);
     }
 }
